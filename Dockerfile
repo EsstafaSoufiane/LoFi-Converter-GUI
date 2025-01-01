@@ -3,8 +3,8 @@ FROM python:3.9-slim
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
+    ffmpeg \
     libavcodec-extra \
-    libav-tools \
     libavformat-dev \
     libavcodec-dev \
     libavdevice-dev \
