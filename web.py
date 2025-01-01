@@ -21,7 +21,8 @@ origins = [
     "http://127.0.0.1:8000",
     "https://lofi-converter-gui-production.up.railway.app",
     "https://lofi-converter.samevibe.in",
-    "https://*.up.railway.app"
+    "https://*.up.railway.app",
+    "*"  # Allow all origins for health check
 ]
 
 app.add_middleware(
@@ -150,4 +151,22 @@ async def convert_audio(request: YouTubeRequest):
 @app.get("/health")
 @app.get("/")
 async def health_check():
-    return {"status": "healthy", "message": "Lo-Fi Converter API is running"}
+    try:
+        # Basic system checks
+        import psutil
+        memory = psutil.virtual_memory()
+        disk = psutil.disk_usage('/')
+        
+        return {
+            "status": "healthy",
+            "message": "Lo-Fi Converter API is running",
+            "system_info": {
+                "memory_available": f"{memory.available / (1024 * 1024):.1f}MB",
+                "disk_free": f"{disk.free / (1024 * 1024 * 1024):.1f}GB"
+            }
+        }
+    except Exception as e:
+        return {
+            "status": "unhealthy",
+            "message": str(e)
+        }
