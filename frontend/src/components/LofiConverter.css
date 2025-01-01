@@ -1,0 +1,158 @@
+.lofi-converter {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 20px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.converter-container {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  color: #ffffff;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.tip {
+  color: #a0aec0;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.converter-form {
+  margin-bottom: 30px;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.youtube-input {
+  flex: 1;
+  padding: 12px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.youtube-input:focus {
+  outline: none;
+  border-color: #3182ce;
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.3);
+}
+
+.convert-button {
+  padding: 12px 24px;
+  background: #3182ce;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.convert-button:hover {
+  background: #2c5282;
+}
+
+.convert-button:disabled {
+  background: #64748b;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #fc8181;
+  background: rgba(252, 129, 129, 0.1);
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.result-section {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.result-section h2 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.audio-player {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.download-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #48bb78;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.download-button:hover {
+  background: #38a169;
+}
+
+.github-section {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.github-link {
+  color: #a0aec0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.github-link:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 480px) {
+  .converter-container {
+    padding: 20px;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  .convert-button {
+    width: 100%;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+}

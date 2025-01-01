@@ -1,0 +1,8 @@
+streamlit==1.25.0
+pedalboard==0.7.5
+soundfile==0.12.1
+yt-dlp==2024.3.10
+fastapi==0.109.0
+uvicorn==0.25.0
+python-multipart==0.0.6
+moviepy==1.0.3

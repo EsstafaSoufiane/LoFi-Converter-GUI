@@ -1,0 +1,38 @@
+.streamlit/
+hooks/
+main.spec
+main.py
+uploaded_files/*
+venv/*
+tmp.wav
+__pycache__
+temp.py
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build
+/build
+/dist
+*.pyc
+
+# Temp files
+*.tmp
+*.temp
+.DS_Store
