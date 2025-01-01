@@ -143,5 +143,6 @@ async def convert_audio(request: YouTubeRequest):
             shutil.rmtree(temp_dir)
 
 @app.get("/health")
+@app.get("/")
 async def health_check():
-    return {"status": "healthy"}
+    return {"status": "healthy", "message": "Lo-Fi Converter API is running"}
