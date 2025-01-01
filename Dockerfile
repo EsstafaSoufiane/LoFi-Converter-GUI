@@ -4,14 +4,6 @@ FROM python:3.9-slim
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     ffmpeg \
-    libavcodec-extra \
-    libavformat-dev \
-    libavcodec-dev \
-    libavdevice-dev \
-    libavfilter-dev \
-    libavutil-dev \
-    libswscale-dev \
-    libswresample-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
