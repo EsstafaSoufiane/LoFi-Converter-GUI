@@ -5,7 +5,7 @@ from pydantic import BaseModel
 import yt_dlp
 import os
 import uuid
-from moviepy.editor import AudioFileClip, vfx
+from pydub import AudioSegment
 import tempfile
 import shutil
 
@@ -86,17 +86,22 @@ def apply_lofi_effect(input_path: str) -> str:
         print(f"Output will be saved to: {output_path}")
         
         # Load the audio file
-        audio = AudioFileClip(input_path)
+        audio = AudioSegment.from_mp3(input_path)
         
-        # Apply lo-fi effect (slow down to 85% speed)
-        lofi_audio = audio.fx(vfx.speedx, 0.85)
+        # Apply lo-fi effects:
+        # 1. Slow down the tempo (85% speed)
+        slowed_audio = audio._spawn(audio.raw_data, overrides={
+            "frame_rate": int(audio.frame_rate * 0.85)
+        })
         
-        # Write the processed audio
-        lofi_audio.write_audiofile(output_path)
+        # 2. Lower the sample rate for that "vintage" sound
+        lofi_audio = slowed_audio.set_frame_rate(22050)
         
-        # Close the clips to free up resources
-        audio.close()
-        lofi_audio.close()
+        # 3. Add some subtle compression
+        lofi_audio = lofi_audio.compress_dynamic_range()
+        
+        # Export the processed audio
+        lofi_audio.export(output_path, format="mp3", bitrate="192k")
         
         if not os.path.exists(output_path):
             raise Exception(f"Failed to create output file at {output_path}")
